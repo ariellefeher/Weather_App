@@ -33,40 +33,18 @@ const App: React.FC = () => {
 
   const handleCityChange = async (e: any) => {
     setCity(e.detail.value);
-    
-     // Define YQL query
-     const yql_query = `select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${e.detail.value}") and u='c'`;
 
-     // Construct the request URL
-     const url = `https://query.yahooapis.com/v1/public/yql?q=${encodeURIComponent(yql_query)}&format=json`;
- 
-     try {
-       const response = await fetch(url);
-       const data = await response.json();
- 
-       if (!data.query.results) {
-         throw new Error("Empty results from Yahoo");
-       }
- 
-       let condition = data.query.results.channel.item.condition;
- 
-       // Update the weather state
-       setWeather(condition.temp);
- 
-     } catch (error) {
-       console.error("Error fetching weather data: ", error);
-     }
+  const API_KEY = '6050edbb54b73571254d1ea2c2f5cca5';
 
-    // // Yahoo Weather API URL (replace with actual)
-    // const API_URL = `https://weather-yahooapis-com/YOUR_API_KEY/forecasts/${e.detail.value},fr`;
+  const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=${e.detail.value}&units=metric&appid=${API_KEY}`;
 
-    // try {
-    //   const response = await axios.get(API_URL);
-    //   // Here we're assuming the API returns the temperature in Celsius
-    //   setWeather(response.data.forecasts[0].high);
-    // } catch (error) {
-    //   console.error("Error fetching weather data: ", error);
-    // }
+    try {
+      const response = await axios.get(API_URL);
+
+      setWeather(response.data.main.temp);
+    } catch (error) {
+      console.error("Error fetching weather data: ", error);
+    }
   };
 
   return (
