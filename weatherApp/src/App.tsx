@@ -1,7 +1,4 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonSelect, IonSelectOption, IonLabel } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import { IonApp, setupIonicReact, IonItem, IonInput, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonSelect, IonSelectOption, IonLabel } from '@ionic/react';
 import axios from 'axios';
 import './App.css';
 
@@ -51,19 +48,24 @@ const App: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Select a City</IonTitle>
+          <IonTitle>Weather App</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <IonLabel>City</IonLabel>
-        <IonSelect value={city} placeholder="Select One" onIonChange={handleCityChange}>
-          <IonSelectOption value="Paris">Paris</IonSelectOption>
-          <IonSelectOption value="London">London</IonSelectOption>
-          <IonSelectOption value="Tel Aviv">Tel Aviv</IonSelectOption>
-          <IonSelectOption value="Sydney">Sydney</IonSelectOption>
-        </IonSelect>
-        <h2>Weather: {weather}°C</h2>
-        <h2>App made by Arielle Feher!</h2>
+        <IonItem>
+          <IonLabel>City</IonLabel>
+          <IonSelect value={city} placeholder="Select One" onIonChange={handleCityChange}>
+            <IonSelectOption value="Paris">Paris</IonSelectOption>
+            <IonSelectOption value="London">London</IonSelectOption>
+            <IonSelectOption value="Tel Aviv">Tel Aviv</IonSelectOption>
+            <IonSelectOption value="Sydney">Sydney</IonSelectOption>
+          </IonSelect>
+        </IonItem>
+        <IonItem>
+          <IonLabel>Weather: </IonLabel>
+          <IonInput value={weather + '°C'} readonly />
+        </IonItem>
+        <h2 className="ion-text-center">App made by Arielle Feher</h2>
       </IonContent>
     </IonPage>
   );
