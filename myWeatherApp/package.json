@@ -1,5 +1,5 @@
 {
-  "name": "weatherApp",
+  "name": "myWeatherApp",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -12,9 +12,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@capacitor/android": "^5.0.4",
+    "@capacitor/android": "5.0.4",
     "@capacitor/app": "5.0.2",
-    "@capacitor/core": "^5.0.4",
+    "@capacitor/core": "5.0.4",
     "@capacitor/haptics": "5.0.2",
     "@capacitor/keyboard": "5.0.2",
     "@capacitor/status-bar": "5.0.2",
@@ -30,7 +30,7 @@
     "react-router-dom": "^5.3.4"
   },
   "devDependencies": {
-    "@capacitor/cli": "^5.0.4",
+    "@capacitor/cli": "5.0.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
